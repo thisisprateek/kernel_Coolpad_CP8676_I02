@@ -1014,6 +1014,7 @@ static int oom_adjust_permission(struct inode *inode, int mask)
 	p = get_proc_task(inode);
 	if(p) {
 		uid = task_uid(p);
+		//uid = task_uid(p).val;
 		put_task_struct(p);
 	}
 
@@ -1022,6 +1023,7 @@ static int oom_adjust_permission(struct inode *inode, int mask)
 	 * android applications (uid > 10000) as and services (uid >= 1000)
 	 */
 	if (p && (current_fsuid() == 1000) && (uid >= 1000)) {
+	//if (p && (current_fsuid().val == 1000) && (uid >= 1000)) {
 		if (inode->i_mode >> 6 & mask) {
 			return 0;
 		}

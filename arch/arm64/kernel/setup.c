@@ -594,3 +594,13 @@ const struct seq_operations cpuinfo_op = {
 	.stop	= c_stop,
 	.show	= c_show
 };
+#if defined(CONFIG_VGA_CONSOLE) || defined(CONFIG_DUMMY_CONSOLE)
+struct screen_info screen_info = {
+ .orig_video_lines	= 30,
+ .orig_video_cols	= 80,
+ .orig_video_mode	= 0,
+ .orig_video_ega_bx	= 0,
+ .orig_video_isVGA	= 1,
+ .orig_video_points	= 8
+};
+#endif
